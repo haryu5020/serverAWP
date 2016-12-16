@@ -52,6 +52,7 @@
             <input type="button" value = "제 2 열람실" class="reading_room_btn" id="second_room">
             <div id = "reading_seat_first">
                 <script>
+                    var num=0;
                     var socket = io.connect();
                     socket.on('reserver',function(data){
                         var $target = $('div[data-x = ' + data.x + '][data-y = '+ data.y + ']');
@@ -82,13 +83,20 @@
                                         'class': 'seat',
                                         'data-x': indexX,
                                         'data-y': indexY
-                                    }).appendTo($line);
+                                    });
                                     
                                      if (seat == 1) {
                                          $output.addClass('enable').on('click', onClickSeat);
                                      } else if (seat == 2) {
                                          $output.addClass('disable');
                                      }
+                                    
+                                     if($output.hasClass('enable')){
+                                        $output.append(num);
+                                        num++;
+                                     }
+                                    
+                                     $output.appendTo($line);
                                 });
                                 
                                 $line.appendTo("#reading_seat_first");  

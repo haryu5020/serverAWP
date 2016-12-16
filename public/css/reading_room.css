@@ -54,6 +54,8 @@ body > section > .reading_room_btn{
 
 .enable{
     background: gray;
+    color:white;
+    padding-left:1%;
 }
 
 .enable:hover {
