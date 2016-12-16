@@ -1,0 +1,49 @@
+#book_list{
+    width:75%;
+    margin-left:3%;
+    float:left;
+    border:3px solid #a6a6a6;
+    border-radius:10px;
+    padding-top:2%;
+}
+#book_list > article{
+    width:100%;
+    height: 33%;
+    margin-bottom:2%;
+    padding-bottom:1%;
+    border-bottom:2px solid #a6a6a6;
+}
+
+#book_list > article > div{
+    width:13%;
+    height:100%;
+    margin-left:3.5%;
+    margin-right:3.5%;
+    float:left;
+    overflow: hidden;
+    cursor:pointer;
+}
+#book_list > article > div > img{
+    width:100%;
+    height:75%;
+    border:1px solid #a6a6a6;
+}
+#book_list > article > div > p{
+    text-align:center;
+    font-weight:bold;
+    font-size:1.3em;
+    margin-top:12%;
+}
+body > div{
+    width:10%;
+    height:5%;
+    float:left;
+    margin-left:4%;
+    background-color:#a6a6a6;
+    border-radius:5px;
+    color:#fff;
+    font-size:1.3em;
+    font-weight:bold;
+    text-align:center;
+    padding-top:0.5%;
+}

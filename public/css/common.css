@@ -1,0 +1,70 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
+body{
+    font-size:2em !important;
+    font-family: 'Nanum Pen Script', cursive !important;
+}
+
+body > header{
+    width:100vw;
+    height:30vh;
+    background-image:url("../img/header_back.png");
+    background-size: 20% 95%;
+    background-repeat: no-repeat;
+}
+body > header > img{
+    width:14vw;
+    height:38%;
+    margin-top:3%;
+    margin-left:10%;
+    cursor:pointer;
+}
+body > header > div{
+    width:30%;
+    float:right;
+    clear:both;
+}
+.header_btn{
+    width:20%;
+    height:15%;
+    float:right;
+    margin-right:5%;
+    background-color:teal;
+    border:0px;
+    margin-top:1.5%;
+    border-radius:20px;
+    color:#fff;
+    font-weight:bold;
+}
+#serch_in{
+    float:right;
+    width:60%;
+    height:15%;
+    margin-top:25%;
+    margin-right:3%;
+    border-radius:5px;
+}
+#serch_btn{
+    margin-top:25%;
+    width:10%;
+}
+nav{
+    width:15%;
+    height:60%;
+    margin-left:3%;
+    border-radius:10px;
+    background-color:#fff5d2;
+    float:left;
+}
+nav > div{
+    width:90%;
+    height:10%;
+    margin-left:5%;
+    text-align:center;
+    background-image:url("../img/list_btn.png");
+    background-size:100% 100%;
+    border-radius:10px;
+    padding-top:7%;
+    margin-top:10%;
+    font-weight:bold;
+    cursor:pointer;
+}

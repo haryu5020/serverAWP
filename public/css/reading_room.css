@@ -1,0 +1,70 @@
+#reading_room{
+    width:75%;
+    margin-left:3%;
+    float:left;
+    border:3px solid #a6a6a6;
+    border-radius:10px;
+    padding-top:2%;
+}
+
+body > div{
+    width:10%;
+    height:5%;
+    float:left;
+    margin-left:4%;
+    background-color:#a6a6a6;
+    border-radius:5px;
+    color:#fff;
+    font-size:1.3em;
+    font-weight:bold;
+    text-align:center;
+    padding-top:0.5%;
+}
+
+body > section > .reading_room_btn{
+    background-color: #a6a6a6;
+    border-radius: 5px;
+    color:#fff;
+    margin-left: 5%;
+    margin-bottom: 2%;
+    width:19%;
+    height:3.6%;
+}
+
+#reading_seat_first{
+    width: 80%;
+    height: 50%;
+    margin:0 auto;
+    margin-top: 30px;
+    margin-bottom: 3%;
+}
+
+.line{
+    overflow: hidden;
+    float: left;
+}
+
+.seat{
+    margin: 2px;
+    float: left;
+    width: 30px;
+    height: 30px;
+    border-radius: 3px;
+}
+
+.enable{
+    background: gray;
+}
+
+.enable:hover {
+    background: black;
+}
+
+.disable {
+    background: red;
+}
+
+.comeback {
+    background: white;
+}
+

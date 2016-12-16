@@ -1,0 +1,142 @@
+<html>
+    <head>
+        <title>myLibrary</title>
+        <link rel="stylesheet" href="css/common.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/join.css">
+        <link rel="stylesheet" href="css/login.css">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <header>
+            <img src="img/logo.png">
+            <div>
+                <input type="button" value="회원가입" class="header_btn" id="join">
+                <input type="button" value="로그인" class="header_btn" id="login">
+            </div>
+            <div>
+                <input type="button" value="검색" class="header_btn" id="serch_btn">
+                <input type="text" value="검색어를 입력하시오." id="serch_in">
+            </div>
+        </header>
+        <nav>
+            <div id="b_nav">도서리스트
+            </div>
+            <div id="r_nav">열람실
+            </div>
+            <div id="q_nav">질문하기
+            </div>
+            <div id="n_nav">공지사항
+            </div>
+            <div id="map_nav">찾아오시는길
+            </div>
+        </nav>
+        <section>
+            <header>신작도서</header>
+            <div>
+                <article class="new_book">
+                    <img src="img/new_book1.PNG">
+                    <div class="book_title">모던 웹을 위한 javascript, jquery입문</div>
+                </article>
+                <article class="new_book">
+                    <img src="img/new_book2.PNG">
+                    <div class="book_title">모던 웹을 위한 node.js프로그래밍</div>
+                </article>
+                <article class="new_book">
+                    <img src="img/new_book3.PNG">
+                    <div class="book_title">안드로이드 앱 프로그래밍</div>
+                </article>
+            </div>
+        </section>
+        <div>
+            <div id="notice_header">
+                <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
+                공지사항
+            </div>
+            <div>
+                <div class="notice_list">
+                    <p class="notice_title">휴관일 안내</p>
+                    <p class="notice_con">12월 휴관일 안내입니다. 12월은 24일, 25일 크리스마스 연휴로 이틀간 휴무 예정입니다.</p>
+                </div>
+                <div class="notice_list">
+                    <p class="notice_title">신작도서 입고일</p>
+                    <p class="notice_con"> 이번 신작도서는 모던웹을 위한 javascript, jquery 12월 5일 입고. 모던웹을 위한 node.js프로그래밍 12월 6일 입고 예정입니다.</p>
+                </div>
+            </div>
+            <div id="notice_bottom">
+                더보기
+                <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
+            </div>
+        </div>
+        <section id="login_modal">
+            <div>
+                <div id="login_section">
+                    <h3>로그인</h3>
+                    <div>
+                        <label>아이디</label>
+                        <input type="text" value="아이디를 입력해 주세요." id="id_put">
+                    </div>
+                    <div>
+                        <label>비밀번호</label>
+                        <input type="password" id="pw_put">
+                    </div>
+                </div>
+                <div id="login_bottom">
+                    <input type="button" value="로그인" id="login_btn">
+                    <input type="button" value="닫기" id="login_close">
+                </div>
+            </div>
+        </section>
+        <section id="join_modal">
+            <div>
+                <div id="join_section">
+                    <h3>회원가입</h3>
+                    <div>
+                        <label>아이디</label>
+                        <input type="text" style="width:50%;" value="아이디">
+                        <input type="button" value="중복확인" id="id_check">
+                    </div>
+                    <div>
+                        <label>비밀번호</label>
+                        <input type="password">
+                    </div>
+                    <div>
+                        <label>비밀번호 확인</label>
+                        <input type="password">
+                    </div>
+                    <div>
+                        <label>이름</label>
+                        <input type="text" value="이름">
+                    </div>
+                    <div>
+                        <label>전화번호</label>
+                        <input type="text" value="전화번호">
+                        <p>* 전화번호는 - 없이 입력해 주세요.</p>
+                    </div>
+                    <div>
+                        <label>주소</label>
+                        <input type="text" value="주소">
+                    </div>
+                </div>
+                <div id="join_bottom">
+                    <input type="button" value="회원가입">
+                    <input type="button" value="닫기" id="join_close">
+                </div>
+            </div>
+        </section>
+        
+        
+        
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script src="js/common.js"></script>
+        <script src="js/login_join.js"></script>
+    </body>
+</html>

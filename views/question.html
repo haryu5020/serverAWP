@@ -1,0 +1,133 @@
+<html>
+    <head>
+        <title>myLibrary</title>
+        <link rel="stylesheet" href="css/common.css">
+        <link rel="stylesheet" href="css/question.css">
+        <link rel="stylesheet" href="css/join.css">
+        <link rel="stylesheet" href="css/login.css">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <header>
+            <img src="img/logo.png">
+            <div>
+                <input type="button" value="회원가입" class="header_btn" id="join">
+                <input type="button" value="로그인" class="header_btn" id="login">
+            </div>
+            <div>
+                <input type="button" value="검색" class="header_btn" id="serch_btn">
+                <input type="text" value="검색어를 입력하시오." id="serch_in">
+            </div>
+        </header>
+        <nav>
+            <div id="b_nav">도서리스트
+            </div>
+            <div id="r_nav">열람실
+            </div>
+            <div id="q_nav">질문하기
+            </div>
+            <div id="n_nav">공지사항
+            </div>
+            <div id="map_nav">찾아오시는길
+            </div>
+        </nav>
+        <div>
+            최근 질문목록
+        </div>
+        <section id="question_list">
+            <div>
+                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                <p>이번 달 도서관 휴무일은 언제인가요?</p>
+                <input type="button" value="답변확인">
+            </div>
+            <div>
+                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                <p>대출 연장을 신청하고 싶습니다.</p>
+                <input type="button" value="답변확인">
+            </div>
+            <div>
+                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                <p>열람실에서 이어폰을 잃어버렸습니다. 어떻게 해야하나요?</p>
+                <input type="button" value="답변확인">
+            </div>
+            <div>
+                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                <p>신작 도서 신청을 하고싶습니다.</p>
+                <input type="button" value="답변확인">
+            </div>           
+        </section>
+        <section id="question_space">
+            <div>질문하기</div>
+            <label>제&nbsp;&nbsp;&nbsp;목</label>
+            <input type="text" value="제목을 입력해 주세요.">
+            <textarea>내용을 입력해 주세요.</textarea>
+            <input type="button" value="질문등록">
+        </section>
+        <section id="login_modal">
+            <div>
+                <div id="login_section">
+                    <h3>로그인</h3>
+                    <div>
+                        <label>아이디</label>
+                        <input type="text" value="아이디를 입력해 주세요." id="id_put">
+                    </div>
+                    <div>
+                        <label>비밀번호</label>
+                        <input type="password" id="pw_put">
+                    </div>
+                </div>
+                <div id="login_bottom">
+                    <input type="button" value="로그인" id="login_btn">
+                    <input type="button" value="닫기" id="login_close">
+                </div>
+            </div>
+        </section>
+        <section id="join_modal">
+            <div>
+                <div id="join_section">
+                    <h3>회원가입</h3>
+                    <div>
+                        <label>아이디</label>
+                        <input type="text" style="width:50%;" value="아이디">
+                        <input type="button" value="중복확인" id="id_check">
+                    </div>
+                    <div>
+                        <label>비밀번호</label>
+                        <input type="password">
+                    </div>
+                    <div>
+                        <label>비밀번호 확인</label>
+                        <input type="password">
+                    </div>
+                    <div>
+                        <label>이름</label>
+                        <input type="text" value="이름">
+                    </div>
+                    <div>
+                        <label>전화번호</label>
+                        <input type="text" value="전화번호">
+                        <p>* 전화번호는 - 없이 입력해 주세요.</p>
+                    </div>
+                    <div>
+                        <label>주소</label>
+                        <input type="text" value="주소">
+                    </div>
+                </div>
+                <div id="join_bottom">
+                    <input type="button" value="회원가입">
+                    <input type="button" value="닫기" id="join_close">
+                </div>
+            </div>
+        </section>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script src="js/common.js"></script>
+        <script src="js/login_join.js"></script>
+    </body>
+</html>

@@ -1,0 +1,104 @@
+body > div{
+    width:10%;
+    height:5%;
+    float:left;
+    margin-left:4%;
+    background-color:#a6a6a6;
+    border-radius:5px;
+    color:#fff;
+    font-size:1.3em;
+    font-weight:bold;
+    text-align:center;
+    padding-top:0.5%;
+}
+#question_list{
+    width:70%;
+    height:30%;
+    margin-left:3%;
+    float:left;
+    background-color:#a6a6a6;
+    border-radius:10px;
+    padding-left:2%;
+    padding-top:1%;
+    overflow:auto;
+}
+#question_list > div{
+    width:80%;
+    height:18%;
+    margin-top:1.5%;
+    margin-bottom:1.5%;
+    border:3px solid #fff;
+    padding:0.6%;
+    border-radius:10px;
+    color:#fff;
+}
+#question_list > div > span{
+    width:5%;
+    font-size:1.5em;
+    float:left;
+}
+#question_list > div > p{
+    font-size:1.3em;
+    float:left;
+}
+#question_list > div > input{
+    width:7%;
+    height:100%;
+    background-color:#fff;
+    color:#a6a6a6 !important;
+    border:0px;
+    border-radius:5px;
+    float:right;
+}
+#question_space{
+    width:70%;
+    height:30%;
+    border:3px solid teal;
+    border-radius:10px;
+    float:left;
+    margin-left:3%;
+    margin-top:1%;
+}
+#question_space > div{
+    width:13%;
+    height:17%;
+    margin-left:1.2%;
+    color:#fff;
+    font-weight:bold;
+    text-align:center;
+    font-size:1.3em;
+    background-color:teal;
+    border-radius:5px;
+    padding-top:0.6%;
+}
+#question_space > label{
+    width:10%;
+    font-size:1.3em;
+    margin-left:10%;
+    margin-top:2%;
+}
+#question_space > input[type='text']{
+    width:55%;
+    height:12%;
+    border:2px solid #a6a6a6;
+    border-radius:10px;
+}
+#question_space > textarea{
+    width:65%;
+    height:50%;
+    margin-left:20.2%;
+    margin-top:1%;
+    border-radius:10px;
+    float:left;
+}
+#question_space > input[type='button']{
+    width:6%;
+    height:50%;
+    margin-left:1%;
+    margin-top:1%;
+    border-radius:5px;
+    background-color:teal;
+    color:#fff;
+    font-size:1.3em;
+    float:left;
+}

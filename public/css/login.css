@@ -1,0 +1,83 @@
+#login_modal{
+    position: absolute;
+    width:100vw;
+    height:100vh;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index:1040;
+    background-color:rgba(0,0,0,0.6);
+    padding-top:10%;
+    display:none;
+    margin-left:0% !important;
+}
+#login_modal > div{
+    background-color:#fff;
+    width: 30%;
+    height:60%;
+    margin-left:35%;
+    padding-top:2%;
+    padding-bottom:2%;
+    padding-left:2%;
+    padding-right:2%;
+    float:left;
+}
+#login_section{
+    width:80%;
+    margin-left:10%;
+    height:80%;
+}
+#login_section > h3{
+    font-weight:bold;
+    font-size:3em;
+    margin-bottom:13%;
+}
+#login_section > div{
+    width:100%;
+    height:15%;
+    clear:both;
+    margin-top:5%;
+}
+#login_section > div >label{
+    width:20%;
+    height:100%;
+    float:left;
+    font-size:1.3em;
+}
+#login_section > div > input{
+    width:80%;
+    height:100%;
+    border:0px;
+    border-bottom:3px solid #a6a6a6;
+    border-radius:5px;
+    font-size:1.3em;
+    float:left;
+}
+
+#login_bottom{
+    width:100%;
+    height:20%;
+}
+#login_bottom > input{
+    width:45%;
+    height:70%;
+    margin-left:2.5%;
+    margin-right:2.5%;
+    border-radius:5px;
+    background-image:url('../img/list_btn.png');
+    background-size:100% 100%;
+    border:1px solid #a6a6a6;
+    float:left;
+    background-color:#fff;
+    font-weight:bold;
+    font-size:1.5em;
+}
+#id_check{
+    width:15% !important;
+    height:70% !important;
+    border:0px !important;
+    font-size:1.1em !important;
+    background-color: #e84747;
+    color:#fff;
+}

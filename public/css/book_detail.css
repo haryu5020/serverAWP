@@ -1,0 +1,92 @@
+#book_detail{
+    width:70%;
+    margin-left:3%;
+    float:left;
+    border:3px solid #a6a6a6;
+    background-color:#a6a6a6;
+    border-radius:10px;
+    padding-top:2%;
+    padding-left:5%;
+}
+#book_detail_left{
+    width:27%;
+    height:55%;
+    float:left;
+    overflow:hidden;
+}
+#book_detail_right{
+    width:60%;
+    height:51%;
+    float:left;
+    margin-left:5%;
+    background-color:#fff;
+    padding-left:1%;
+    border-radius:5px;
+}
+#book_detail_left > img{
+    width:100%;
+    height:80%;
+    border:1px solid #a6a6a6;
+}
+#book_detail_left > p{
+    font-size:1.5em;
+    text-align:center;
+    margin-top:5%;
+    background-color:#fff;
+    border-radius:5px;
+}
+body > div{
+    width:10%;
+    height:5%;
+    float:left;
+    margin-left:4%;
+    background-color:#a6a6a6;
+    border-radius:5px;
+    color:#fff;
+    font-size:1.3em;
+    font-weight:bold;
+    text-align:center;
+    padding-top:0.5%;
+}
+#book_detail_right > div{
+    width:100%;
+    height:8%;
+    margin-top:2%;
+    font-size:1.3em;
+    clear:both;
+}
+#book_detail_right > div > label{
+    background-image:url('../img/book_detail_label.PNG');
+    background-size:80% 100%;
+    background-repeat:no-repeat;    
+    float:left;
+    width:10%;
+    padding-left:1%;
+}
+#book_detail_right > label{
+    margin-top:8%;
+    font-size:1.3em;
+    background-image:url('../img/book_detail_label.PNG');
+    background-size:8% 100%;
+    background-repeat:no-repeat;
+    width:100%;
+    clear:both;
+    padding-left:1%;
+}
+#book_detail_right > p{
+    width:100%;
+    height:25%;
+    overflow:hidden;
+    font-size:1.3em;
+}
+#stock_place{
+    float:left;
+}
+#book_detail_right > div > input{
+    margin-left:2%;
+    width:10%;
+    background-color:teal;
+    color:#fff;
+    border-radius:5px;
+    border:0px;
+}
