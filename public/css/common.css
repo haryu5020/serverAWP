@@ -35,7 +35,7 @@ body > header > div{
     color:#fff;
     font-weight:bold;
 }
-#serch_in{
+#search_in{
     float:right;
     width:60%;
     height:15%;
@@ -43,7 +43,7 @@ body > header > div{
     margin-right:3%;
     border-radius:5px;
 }
-#serch_btn{
+#search_btn{
     margin-top:25%;
     width:10%;
 }
