@@ -30,7 +30,7 @@ var seats = [
     [1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1],
     [1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1]
 ];
-
+/*
 var conn = mysql.createConnection({
 	host : '52.78.149.4' ,
 	port : '3306' ,
@@ -46,7 +46,7 @@ conn.connect(function(err){
 		throw err;
 	}
 });
-
+*/
 
 // all environments
 app.set('port', process.env.PORT || 3000);
