@@ -34,3 +34,4 @@ $("#map_nav").click(function(){
 $("#r_nav").click(function(){
     $(location).attr('href', '/readingroom');
 })
+

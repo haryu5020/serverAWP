@@ -21,7 +21,7 @@ body > div{
     padding-top:0.5%;
 }
 
-body > section > .reading_room_btn{
+body > section > .reading_room{
     background-color: #a6a6a6;
     border-radius: 5px;
     color:#fff;
@@ -31,7 +31,7 @@ body > section > .reading_room_btn{
     height:3.6%;
 }
 
-#reading_seat_first{
+#reading_seat{
     width: 80%;
     height: 50%;
     margin:0 auto;
