@@ -9,7 +9,7 @@ var express = require('express')
   , user = require('./routes/user')
   , http = require('http')
   , path = require('path')
-  , mysql = require('mysql')
+  //, mysql = require('mysql')
   , passport = require('passport')
   , LocalStrategy = require('passport-local').Strategy
   , cookieParser = require('cookie-parser')
@@ -140,7 +140,10 @@ app.post('/login',function(req, res){
 		var cnt = rows[0].cnt;
 		if( cnt === 1 ){
 			res.cookies.set("auth",true);
-			res.send('<script>alert("환영합니다. ");location.href = "/"; </script>');
+			res.send('<script>alert("환영합니다. ");location.href = "/";
+            $("#join").attr("value", "마이페이지");
+            $("#login").attr("value", "로그아웃");
+            </script>');
 		}else{
 			res.send('<script>alert("아이디가 없거나 비밀번호가 틀렸습니다. ");location.href = "/"; </script>');
 		}

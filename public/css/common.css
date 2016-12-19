@@ -35,17 +35,24 @@ body > header > div{
     color:#fff;
     font-weight:bold;
 }
+body > header > form{
+    width:50%;
+    float:right;
+    height:15%;
+    margin-top:2%;
+}
 #search_in{
     float:right;
-    width:60%;
-    height:15%;
-    margin-top:25%;
-    margin-right:3%;
+    width:40%;
+    height:100%;
+    margin-right:6%;
     border-radius:5px;
 }
 #search_btn{
-    margin-top:25%;
+    margin-top:0px !important;
     width:10%;
+    height:100%;
+    margin-right:2%;
 }
 nav{
     width:15%;
