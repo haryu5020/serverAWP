@@ -33,16 +33,6 @@
             $("#join_close").click(function(){
                 $("#join_modal").css("display", "none");
             })
-          
-$("#login_btn").click(function(){
-
-    if($("#id_put").val()=='admin'){
-        if($("#pw_put").val()=='1234'){
-            console.log("login");
-            $(location).attr('href', 'manage_main.html');
-        }
-    }
-})
 
 $("#id_put").click(function(){
     $("#id_put").val(' ');
@@ -65,7 +55,7 @@ $('#login_form').submit(function() {
          error: function (xhr, ajaxOptions, thrownError) {
             console.log(xhr.status);
             console.log(thrownError);
-         }
-      });
+         });
+});
 
             

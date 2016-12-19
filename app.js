@@ -142,6 +142,7 @@ app.get('/', function(req, res, next){
 });
 
 app.post('/login',function(req, res){
+	console.log(JSON.stringify(req));
 	var id = req.body.id;
 	var pw = req.body.password;
 	

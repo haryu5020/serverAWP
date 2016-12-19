@@ -7,7 +7,7 @@ $('nav > div:even').mouseover(function(){
     $(this).css("color", "#fff");
 })
 $('nav > div:even').mouseout(function(){
-    $(this).css("background-image", "url('../img/list_btn.png')");
+    $(this).css("background-image", "url('/img/list_btn.png')");
     $(this).css("color", "#000");
 })
 $('nav > div:odd').mouseover(function(){
@@ -16,7 +16,7 @@ $('nav > div:odd').mouseover(function(){
     $(this).css("color", "#fff");
 })
 $('nav > div:odd').mouseout(function(){
-    $(this).css("background-image", "url('../img/list_btn.png')");
+    $(this).css("background-image", "url('/img/list_btn.png')");
     $(this).css("color", "#000");
 })
 $("#b_nav").click(function(){
@@ -35,3 +35,6 @@ $("#r_nav").click(function(){
     $(location).attr('href', '/readingroom');
 })
 
+$("body > div > #notice_bottom").click(function(){
+    $(location).attr('href', '/notice');
+})
