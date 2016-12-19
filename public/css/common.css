@@ -75,3 +75,6 @@ nav > div{
     font-weight:bold;
     cursor:pointer;
 }
+#log2{
+    display:none;
+}
