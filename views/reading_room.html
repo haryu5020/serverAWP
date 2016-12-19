@@ -26,10 +26,13 @@
                 <input type="button" value="회원가입" class="header_btn" id="join">
                 <input type="button" value="로그인" class="header_btn" id="login">
             </div>
-            <div>
-                <input type="button" value="검색" class="header_btn" id="serch_btn">
-                <input type="text" value="검색어를 입력하시오." id="serch_in">
-            </div>
+            <form action="/search" method = "post">     
+                <div>
+                    
+                    <input type="text" placeholder="검색어를 입력하시오." id="search_in" name = "searchWord">
+                    <input type="submit" value="검색" class="header_btn" id="search_btn">
+                </div>
+            </form>
         </header>
         <nav>
             <div id="b_nav">도서리스트
