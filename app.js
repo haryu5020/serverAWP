@@ -33,7 +33,7 @@ var seats = [
     [1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1],
     [1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1]
 ];
-
+/*
 var conn = mysql.createConnection({
 	host : '127.0.0.1' ,
 	port : '3306' ,
@@ -48,7 +48,7 @@ conn.connect(function(err){
 		console.error(err);
 		throw err;
 	}
-});
+});*/
 
 
 // all environments
@@ -89,8 +89,8 @@ app.get('/notice', renders.notice);
 app.get('/map', renders.map);
 
 
-/*	Join */
-app.post('/join',function(req,res){
+/* Join */
+/*app.post('/join',function(req,res){
 	var userid = req.body.join_id
 	, userpw = req.body.join_password
 	, confirm_userpw = req.body.join_repassword
@@ -114,7 +114,7 @@ app.post('/join',function(req,res){
 		res.send('<script>alert("회원가입이 완료되었습니다. 로그인하세요.");location.href="/";</script>');
 		});
 	}
-});
+});*/
 
 /* Login */
 //Session Check
@@ -126,7 +126,7 @@ app.get('/', function(req, res, next){
 		res.cookies.set("auth",false);
 	}
 });
-
+/*
 app.post('/login',function(req, res){
 	var id = req.body.id;
 	var pw = req.body.password;
@@ -145,7 +145,7 @@ app.post('/login',function(req, res){
 			res.send('<script>alert("아이디가 없거나 비밀번호가 틀렸습니다. ");location.href = "/"; </script>');
 		}
 	});
-});
+});*/
 
 /* Log-out */
 app.get('/logout',function(req, res, next){
@@ -156,7 +156,7 @@ app.get('/logout',function(req, res, next){
 });
 
 /* Search Part */
-app.post('/search',function(req,res,next){
+/*app.post('/search',function(req,res,next){
 	var searchWord = req.body.searchWord;	
 	
 	var query = conn.query('SELECT b_no FROM BOOK WHERE b_name = ?',searchWord,function(err,results){
@@ -170,7 +170,7 @@ app.post('/search',function(req,res,next){
 		}
 	});
 });
-
+*/
 
 /* Reading room */
 app.get('/readingroom/seats',function(req,res,next){
