@@ -67,5 +67,6 @@ $('#login_form').submit(function() {
             console.log(thrownError);
          }
       });
+);
 
             
