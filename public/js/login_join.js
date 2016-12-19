@@ -51,11 +51,17 @@ $('#login_form').submit(function() {
       $.ajax({
          type:'POST',
          url:'/login',
-         data:{id: $('#id').val(), 
-                 password: $('#password').val()},
-         success:function(result){
-            $("#join").attr("value", "마이페이지");
-            $("#login").attr("value", "로그아웃");
+         data:{
+            id: $('#id').val(), 
+            password: $('#password').val()
+         },
+         success : function(result){
+                if(result['result']==true){
+                    $("#join").attr("value", "마이페이지");
+                    $("#login").attr("value", "로그아웃");
+                }else{
+                    $("body").append(result['document']);
+                }
             }
          });
 });
