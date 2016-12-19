@@ -36,12 +36,7 @@
           
 $("#login_btn").click(function(){
 
-    if($("#id_put").val()=='admin'){
-        if($("#pw_put").val()=='1234'){
-            console.log("login");
-            $(location).attr('href', 'manage_main.html');
-        }
-    }
+
 })
 
 $("#id_put").click(function(){
@@ -56,17 +51,13 @@ $('#login_form').submit(function() {
       $.ajax({
          type:'POST',
          url:'/login',
-         data:  {id: $('#id').val(), password: $('#password').val()},
+         data:{id: $('#id').val(), 
+                 password: $('#password').val()},
          success:function(result){
             $("#join").attr("value", "마이페이지");
             $("#login").attr("value", "로그아웃");
             }
-         },
-         error: function (xhr, ajaxOptions, thrownError) {
-            console.log(xhr.status);
-            console.log(thrownError);
-         }
-      });
-);
+         });
+});
 
             
