@@ -50,5 +50,22 @@ $("#id_put").click(function(){
 $("#join_section > div > input[type='text']").click(function(){
     $(this).val(' ');
 })
-            
+ 
+
+$('#login_form').submit(function() {
+      $.ajax({
+         type:'POST',
+         url:'/login',
+         data:  {id: $('#id').val(), password: $('#password').val()},
+         success:function(result){
+            $("#join").attr("value", "마이페이지");
+            $("#login").attr("value", "로그아웃");
+            }
+         },
+         error: function (xhr, ajaxOptions, thrownError) {
+            console.log(xhr.status);
+            console.log(thrownError);
+         }
+      });
+
             
