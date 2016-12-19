@@ -79,7 +79,7 @@ if ('development' === app.get('env')) {
 }
 
 //Page rendering
-app.get('/', renders.main);
+//app.get('/', renders.main);
 app.get('/book_list',renders.book_list);
 app.get('/readingroom', renders.readingRoom);
 app.get('/qna', renders.qna);
@@ -89,13 +89,15 @@ app.get('/book_list/book_detail',renders.book_detail);
 
 app.get('/',function(req,res){
 	if(req.cookies.auth){
+		console.log(req.cookies.auth);
 		//쿠키 유지시 Login 없애고 logout 버튼
-		//res.send('<script>$("#join").attr("value", "마이페이지");$("#login").attr("value", "로그아웃"); </script>');
+		//res.send('<script> document.getElementById("login").setAttribute("value", "로그아웃"); document.getElementById("join").setAttribute("value", "Mypage"); </script>');
 	}
 	else{
 		console.log(req.cookies.auth);
 		res.cookie("auth",false);
 	}
+	res.render("main.html");
 });
 
 /* Join */
@@ -172,7 +174,7 @@ app.post('/search',function(req,res,next){
 			return;
 		}
 		else{
-			console.log(results[0].b_no);
+			res.render('book_detail_' + results[0].b_no + '.html');
 		}
 	});
 });
