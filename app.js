@@ -9,14 +9,14 @@ var express = require('express')
   , user = require('./routes/user')
   , http = require('http')
   , path = require('path')
-  //, mysql = require('mysql')
-  , passport = require('passport')
-  , LocalStrategy = require('passport-local').Strategy
+  , mysql = require('mysql')
   , cookieParser = require('cookie-parser')
   , bodyParser = require('body-parser')
   , url = require('url')
   , session = require('express-session')
   , socketio = require('socket.io');
+
+
 
 var app = express();
 
@@ -33,7 +33,7 @@ var seats = [
     [1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1],
     [1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1]
 ];
-/*
+
 var conn = mysql.createConnection({
 	host : '127.0.0.1' ,
 	port : '3306' ,
@@ -41,6 +41,7 @@ var conn = mysql.createConnection({
 	password : 'gkfb0724' ,
 	database : 'AWP'
 });
+
 conn.connect(function(err){
 	console.log('MYSQL Server connect');
 	if (err) {
@@ -48,8 +49,7 @@ conn.connect(function(err){
 		console.error(err);
 		throw err;
 	}
-});*/
-
+});
 
 // all environments
 app.set('port', process.env.PORT || 18880);
@@ -59,6 +59,7 @@ app.engine('.html', require('ejs').__express);
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
+app.use(express.cookieParser());
 app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
@@ -71,9 +72,6 @@ app.use(session({
 		maxAge : 1000 * 60 * 60 * 24	//쿠키 하루 유지
 	}
 }));
-app.use(passport.initialize());
-app.use(passport.session());
-
 
 // development only
 if ('development' === app.get('env')) {
@@ -87,10 +85,21 @@ app.get('/readingroom', renders.readingRoom);
 app.get('/qna', renders.qna);
 app.get('/notice', renders.notice);
 app.get('/map', renders.map);
+app.get('/book_list/book_detail',renders.book_detail);
 
+app.get('/',function(req,res){
+	if(req.cookies.auth){
+		//쿠키 유지시 Login 없애고 logout 버튼
+		//res.send('<script>$("#join").attr("value", "마이페이지");$("#login").attr("value", "로그아웃"); </script>');
+	}
+	else{
+		console.log(req.cookies.auth);
+		res.cookie("auth",false);
+	}
+});
 
 /* Join */
-/*app.post('/join',function(req,res){
+app.post('/join',function(req,res){
 	var userid = req.body.join_id
 	, userpw = req.body.join_password
 	, confirm_userpw = req.body.join_repassword
@@ -114,19 +123,14 @@ app.get('/map', renders.map);
 		res.send('<script>alert("회원가입이 완료되었습니다. 로그인하세요.");location.href="/";</script>');
 		});
 	}
-});*/
+});
 
 /* Login */
 //Session Check
 app.get('/', function(req, res, next){
-	if(req.cookies.auth){
-		//쿠키 유지시 Login 없애고 logout 버튼
-	}
-	else{
-		res.cookies.set("auth",false);
-	}
+	
 });
-/*
+
 app.post('/login',function(req, res){
 	var id = req.body.id;
 	var pw = req.body.password;
@@ -139,27 +143,23 @@ app.post('/login',function(req, res){
 		console.log('rows', rows);
 		var cnt = rows[0].cnt;
 		if( cnt === 1 ){
-			res.cookies.set("auth",true);
-			res.send('<script>alert("환영합니다. ");location.href = "/";
-            $("#join").attr("value", "마이페이지");
-            $("#login").attr("value", "로그아웃");
-            </script>');
+			res.cookie('auth', true);
+			res.send('<script>alert("환영합니다. ");location.href = "/"; </script>');
 		}else{
 			res.send('<script>alert("아이디가 없거나 비밀번호가 틀렸습니다. ");location.href = "/"; </script>');
 		}
 	});
-});*/
+});
 
 /* Log-out */
 app.get('/logout',function(req, res, next){
 	req.session.destroy(function(err){
-		req.logout();
 		req.redirect('/');
 	});
 });
 
 /* Search Part */
-/*app.post('/search',function(req,res,next){
+app.post('/search',function(req,res,next){
 	var searchWord = req.body.searchWord;	
 	
 	var query = conn.query('SELECT b_no FROM BOOK WHERE b_name = ?',searchWord,function(err,results){
@@ -171,9 +171,12 @@ app.get('/logout',function(req, res, next){
 			res.status(404).send({msg : 'NOT FOUND'});
 			return;
 		}
+		else{
+			console.log(results[0].b_no);
+		}
 	});
 });
-*/
+
 
 /* Reading room */
 app.get('/readingroom/seats',function(req,res,next){
