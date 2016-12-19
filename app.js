@@ -85,7 +85,15 @@ app.get('/readingroom', renders.readingRoom);
 app.get('/qna', renders.qna);
 app.get('/notice', renders.notice);
 app.get('/map', renders.map);
-app.get('/book_list/book_detail',renders.book_detail);
+
+app.get('/book_list/book_detail/0',renders.bookDetailZero);
+app.get('/book_list/book_detail/1',renders.bookDetailOne);
+app.get('/book_list/book_detail/2',renders.bookDetailTwo);
+app.get('/book_list/book_detail/3',renders.bookDetailThree);
+app.get('/book_list/book_detail/4',renders.bookDetailFour);
+app.get('/book_list/book_detail/5',renders.bookDetailFive);
+app.get('/book_list/book_detail/6',renders.bookDetailSix);
+
 
 app.get('/',function(req,res){
 	if(req.cookies.auth){

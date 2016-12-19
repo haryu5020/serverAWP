@@ -23,6 +23,24 @@ exports.book_list = function(req,res){
 exports.map = function(req, res){
         res.render('map.html');
 };
-exports.book_detail = function(req,res){
-	res.render('book_detail.html');
+exports.bookDetailZero = function(req,res){
+	res.render('book_detail_b000000000.html');
+};
+exports.bookDetailOne = function(req,res){
+	res.render('book_detail_b000000001.html');
+};
+exports.bookDetailTwo = function(req,res){
+	res.render('book_detail_b000000002.html');
+};
+exports.bookDetailThree = function(req,res){
+	res.render('book_detail_b000000003.html');
+};
+exports.bookDetailFour = function(req,res){
+	res.render('book_detail_b000000004.html');
+};
+exports.bookDetailFive = function(req,res){
+	res.render('book_detail_b000000005.html');
+};
+exports.bookDetailSix = function(req,res){
+	res.render('book_detail_b000000006.html');
 };
