@@ -1,0 +1,137 @@
+<html>
+    <head>
+        <title>myLibrary</title>
+        <link rel="stylesheet" href="/css/common.css">
+        <link rel="stylesheet" href="/css/book_detail.css">
+        <link rel="stylesheet" href="/css/join.css">
+        <link rel="stylesheet" href="/css/login.css">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <header>
+            <img src="/img/logo.png">
+            <div>
+                <input type="button" value="회원가입" class="header_btn" id="join">
+                <input type="button" value="로그인" class="header_btn" id="login">
+            </div>
+            <form action="/search" method = "post">     
+                <div>
+                    
+                    <input type="text" placeholder="검색어를 입력하시오." id="search_in" name = "searchWord">
+                    <input type="submit" value="검색" class="header_btn" id="search_btn">
+                </div>
+            </form>
+        </header>
+        <nav>
+            <div id="b_nav">도서리스트
+            </div>
+            <div id="r_nav">열람실
+            </div>
+            <div id="q_nav">질문하기
+            </div>
+            <div id="n_nav">공지사항
+            </div>
+            <div id="map_nav">찾아오시는길
+            </div>
+        </nav>
+        <div>
+            도서소개
+        </div>
+        <section id="book_detail">
+            <div id="book_detail_left">
+                <img src="/img/new_book2.PNG">
+                <p>모던 웹을 위한 Node.js 프로그래밍</p>
+            </div>
+            <div id="book_detail_right">
+                <div>
+                    <label>저자  </label>
+                    <p>윤인성</p>
+                </div>
+                <div>
+                    <label>출판사  </label>
+                    <p>한빛미디어</p>
+                </div>
+                <label>책 소개 </label>
+                <p>Node.js는 구글 크롬에 쓰인 자바스크립트 엔진 V8에 기반을 둔 서버 프로그래밍 플랫폼이다. 이벤트 기반 프로그래밍, 비동기 I/O 처리를 통해 동시에 수억 명이 접속하는 서비스에 적합하며 사용자 수가 늘어남에 따라 확장하기 쉽다. 이러한 이유로 서버 프로그래밍 분야에서는 생소한 자바스크립트 기반의 Node.js가 빠르게 인기를 얻고 성장했다. 실제로 페이스북은 단 1%의 성능 향상이라도 얻기 위해 Node.js를 선택했다고 했고, 링크드인은 일부 서비스에서 전체 서비스까지 적용 범위를 확장했다. 월마트는 대규모 시스템에서 새로운 기술을 채택할 때 발생하는 위험보다 얻을 수 있는 이익이 더 크기에 Node.js를 적용했다고 발표했다.</p>
+                <div>
+                    <label>재고수량  </label>
+                    <p id="stocknum" name = "stock"></p>
+                </div>
+                <form method="post" action="/book_list/book_detail/book_reserve">
+                <div>
+                    <label>재고위치  </label>
+                    <p id="stock_place" name = "stockplace"></p>
+                    <input type="submit" value="예약하기" id="reserve_btn">
+                </div>
+                </form>
+            </div>
+        </section>
+        <section id="login_modal">
+            <div>
+                <div id="login_section">
+                    <h3>로그인</h3>
+                    <div>
+                        <label>아이디</label>
+                        <input type="text" placeholder="아이디를 입력해 주세요." id="id_put">
+                    </div>
+                    <div>
+                        <label>비밀번호</label>
+                        <input type="password" id="pw_put">
+                    </div>
+                </div>
+                <div id="login_bottom">
+                    <input type="button" value="로그인" id="login_btn">
+                    <input type="button" value="닫기" id="login_close">
+                </div>
+            </div>
+        </section>
+        <section id="join_modal">
+            <div>
+                <div id="join_section">
+                    <h3>회원가입</h3>
+                    <div>
+                        <label>아이디</label>
+                        <input type="text" style="width:50%;" value="아이디">
+                        <input type="button" value="중복확인" id="id_check">
+                    </div>
+                    <div>
+                        <label>비밀번호</label>
+                        <input type="password">
+                    </div>
+                    <div>
+                        <label>비밀번호 확인</label>
+                        <input type="password">
+                    </div>
+                    <div>
+                        <label>이름</label>
+                        <input type="text" value="이름">
+                    </div>
+                    <div>
+                        <label>전화번호</label>
+                        <input type="text" value="전화번호">
+                        <p>* 전화번호는 - 없이 입력해 주세요.</p>
+                    </div>
+                    <div>
+                        <label>주소</label>
+                        <input type="text" value="주소">
+                    </div>
+                </div>
+                <div id="join_bottom">
+                    <input type="button" value="회원가입">
+                    <input type="button" value="닫기" id="join_close">
+                </div>
+            </div>
+        </section>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script src="/js/common.js"></script>
+        <script src="/js/login_join.js"></script>
+        <script src="/js/book_detail.js"></script>
+    </body>
+</html>

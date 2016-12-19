@@ -24,5 +24,5 @@ exports.map = function(req, res){
         res.render('map.html');
 };
 exports.book_detail = function(req,res){
-	res.render('book_detail');
+	res.render('book_detail.html');
 };

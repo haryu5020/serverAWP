@@ -1,10 +1,10 @@
 <html>
     <head>
         <title>myLibrary</title>
-        <link rel="stylesheet" href="css/common.css">
-        <link rel="stylesheet" href="css/book_detail.css">
-        <link rel="stylesheet" href="css/join.css">
-        <link rel="stylesheet" href="css/login.css">
+        <link rel="stylesheet" href="/css/common.css">
+        <link rel="stylesheet" href="/css/book_detail.css">
+        <link rel="stylesheet" href="/css/join.css">
+        <link rel="stylesheet" href="/css/login.css">
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -16,7 +16,7 @@
     </head>
     <body>
         <header>
-            <img src="img/logo.png">
+            <img src="/img/logo.png">
             <div>
                 <input type="button" value="회원가입" class="header_btn" id="join">
                 <input type="button" value="로그인" class="header_btn" id="login">
@@ -32,7 +32,7 @@
         <nav>
             <div id="b_nav">도서리스트
             </div>
-            <div>열람실
+            <div id="r_nav">열람실
             </div>
             <div id="q_nav">질문하기
             </div>
@@ -46,27 +46,27 @@
         </div>
         <section id="book_detail">
             <div id="book_detail_left">
-                <img src="img/new_book1.PNG">
-                <p>모던 웹을 위한 javascript, jquery 입문</p>
+                <img src="/img/new_book3.PNG">
+                <p>Do it! 안드로이드 앱 프로그래밍</p>
             </div>
             <div id="book_detail_right">
                 <div>
                     <label>저자  </label>
-                    <p>윤인성</p>
+                    <p>정재곤</p>
                 </div>
                 <div>
                     <label>출판사  </label>
-                    <p>한빛미디어</p>
+                    <p>이지스 퍼블리싱</p>
                 </div>
                 <label>책 소개 </label>
-                <p>『JAVASCRIPT JQUERY 입문』은 이미지와 텍스트를 보여주는 단순한 웹 페이지가 아닌 웹 애플리케이션을 개발해야 하는 시대의 흐름에 맞춰 내용을 전면 재구성한 책이다. 트위터, 페이스북과 같은 웹 애플리케이션 개발이나 스마트폰을 위한 모바일 웹 앱 제작에 필요한 자바스크립트 기술을 단 한 권에 모두 담았다.</p>
+                <p>안드로이드 분야에서 큰 사랑을 받아온 《Do it! 안드로이드 앱 프로그래밍》의 세 번째 전면 개정판이 나왔다. 이번 개정 3판에서는 최신 버전인 마시멜로에 맞춰 소스 코드 테스트를 완료했다. 또한 변경된 프래그먼트 사용 방법과 페이스북 연동 방법에 대한 내용을 보강하였으며, 특히 ‘안드로이드 스튜디오’ 사용법에 대한 상세한 해설을 새롭게 추가하여 초보자의 이해를 돕도록 배려했다. </p>
                 <div>
                     <label>재고수량  </label>
-                    <p>3</p>
+                    <p></p>
                 </div>
                 <div>
                     <label>재고위치  </label>
-                    <p id="stock_place">A-16,H-7,K-14</p>
+                    <p id="stock_place"></p>
                     <input type="button" value="예약하기" id="reserve_btn">
                 </div>
             </div>
@@ -77,7 +77,7 @@
                     <h3>로그인</h3>
                     <div>
                         <label>아이디</label>
-                        <input type="text" value="아이디를 입력해 주세요." id="id_put">
+                        <input type="text" placeholder="아이디를 입력해 주세요." id="id_put">
                     </div>
                     <div>
                         <label>비밀번호</label>
@@ -128,8 +128,8 @@
             </div>
         </section>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-        <script src="js/common.js"></script>
-        <script src="js/login_join.js"></script>
-        <script src="js/book_detail.js"></script>
+        <script src="/js/common.js"></script>
+        <script src="/js/login_join.js"></script>
+        <script src="/js/book_detail.js"></script>
     </body>
 </html>
