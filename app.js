@@ -10,8 +10,8 @@ var express = require('express')
   , http = require('http')
   , path = require('path')
   , mysql = require('mysql')
-  , cookieParser = require('cookie-parser')
   , bodyParser = require('body-parser')
+  , cookieParser = require('cookie-parser')
   , url = require('url')
   , session = require('express-session')
   , socketio = require('socket.io');
@@ -63,14 +63,12 @@ app.use(express.cookieParser());
 app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({
-	key: 'sid',
-	secret: 'keyboard cat',
-	resave: false,
-	saveUninitialized: true,
-	cookie : {
-		maxAge : 1000 * 60 * 60 * 24	//쿠키 하루 유지
-	}
+app.use(express.session({
+	  key: 'sid', // 세션키
+	  secret: 'secret', // 비밀키
+	  cookie: {
+	    maxAge: 1000 * 60 * 60 // 쿠키 유효기간 1시간
+	  }
 }));
 
 // development only
@@ -98,12 +96,12 @@ app.get('/book_list/book_detail/6',renders.bookDetailSix);
 app.get('/',function(req,res){
 	if(req.cookies.auth){
 		console.log(req.cookies.auth);
+		
 		//쿠키 유지시 Login 없애고 logout 버튼
 		//res.send('<script> document.getElementById("login").setAttribute("value", "로그아웃"); document.getElementById("join").setAttribute("value", "Mypage"); </script>');
 	}
 	else{
 		console.log(req.cookies.auth);
-		res.cookie("auth",false);
 	}
 	res.render("main.html");
 });
@@ -136,16 +134,9 @@ app.post('/join',function(req,res){
 });
 
 /* Login */
-//Session Check
-app.get('/', function(req, res, next){
-	
-});
-
 app.post('/login',function(req, res){
-	console.log(JSON.stringify(req));
 	var id = req.body.id;
 	var pw = req.body.password;
-	
 	var query = conn.query('SELECT count(*) cnt from USER where u_id=? and u_password=?',[id,pw],function(err, rows){
 		if(err){
 			console.error(err);
@@ -155,20 +146,19 @@ app.post('/login',function(req, res){
 		var cnt = rows[0].cnt;
 		if( cnt === 1 ){
 			res.cookie('auth', true);
-			res.send('<script>alert("환영합니다. ");location.href = "/"; </script>');
+			res.send({result:true});
+			res.redirect("/");
 		}else{
-			res.send('<script>alert("아이디가 없거나 비밀번호가 틀렸습니다. ");location.href = "/"; </script>');
+			res.send({result:false});
 		}
 	});
 });
 
 /* Log-out */
 app.get('/logout',function(req, res, next){
-	req.session.destroy(function(err){
-		req.redirect('/');
-	});
+	res.cookie('auth', false);
+	res.redirect("/");
 });
-
 /* Search Part */
 app.post('/search',function(req,res,next){
 	var searchWord = req.body.searchWord;	
@@ -179,7 +169,7 @@ app.post('/search',function(req,res,next){
 			throw err;
 		}
 		if(results.length === 0){
-			res.status(404).send({msg : 'NOT FOUND'});
+			res.send('<script>alert("원하는 책 데이터가 없습니다!");history.back();</script>');
 			return;
 		}
 		else{
@@ -188,15 +178,13 @@ app.post('/search',function(req,res,next){
 	});
 });
 
-
 /* Reading room */
 app.get('/readingroom/seats',function(req,res,next){
 	res.send(seats);
 });
 
-
 var server = http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
+	console.log('Express server listening on port ' + app.get('port'));
 });
 
 var io = socketio.listen(server);
