@@ -1,10 +1,6 @@
 /**
  * http://usejsdoc.org/
  */
-exports.main = function(req, res){
-        res.render('main.html');
-};
-
 exports.readingRoom = function(req, res){
         res.render('reading_room.html');
 };
@@ -22,6 +18,9 @@ exports.book_list = function(req,res){
 };
 exports.map = function(req, res){
         res.render('map.html');
+};
+exports.mypage = function(req, res){
+    res.render('mypage.html');
 };
 exports.bookDetailZero = function(req,res){
 	res.render('book_detail_b000000000.html');

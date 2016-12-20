@@ -27,6 +27,7 @@ body > section > .reading_room{
     color:#fff;
     margin-left: 5%;
     margin-bottom: 2%;
+    padding-top: 0px;
     width:19%;
     height:3.6%;
 }
@@ -35,7 +36,8 @@ body > section > .reading_room{
     width: 80%;
     height: 50%;
     margin:0 auto;
-    margin-top: 30px;
+    margin-top: 5px;
+    margin-bottom: 10px;
     margin-bottom: 3%;
 }
 
@@ -47,8 +49,8 @@ body > section > .reading_room{
 .seat{
     margin: 2px;
     float: left;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     border-radius: 3px;
 }
 

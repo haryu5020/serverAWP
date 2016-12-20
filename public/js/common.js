@@ -25,16 +25,33 @@ $("#b_nav").click(function(){
 $("#q_nav").click(function(){
     $(location).attr('href', '/qna');
 })
+$("#r_nav").click(function(){
+    $(location).attr('href', '/readingRoom');
+})
 $("#n_nav").click(function(){
     $(location).attr('href', '/notice');
 })
 $("#map_nav").click(function(){
     $(location).attr('href', '/map');
 })
-$("#r_nav").click(function(){
-    $(location).attr('href', '/readingroom');
+$("#logout").click(function(){
+    $(location).attr('href', '/logout');
+})
+$("#mypage").click(function(){
+    $(location).attr('href', '/mypage');
 })
 
 $("body > div > #notice_bottom").click(function(){
     $(location).attr('href', '/notice');
+})
+
+$(document).ready(function(){
+    var cookieVal = $.cookie('id');
+    if(cookieVal != undefined){
+        $("#log1").css("display", "none");
+        $("#log2").css("display", "block");
+    }
+    $("#logout").click(function(){
+        $.removeCookie('id');
+    })
 })

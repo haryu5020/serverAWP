@@ -15,6 +15,7 @@ var express = require('express')
   , url = require('url')
   , session = require('express-session')
   , socketio = require('socket.io');
+require('date-utils');
 
 
 
@@ -22,16 +23,16 @@ var app = express();
 
 //좌석 변수
 var seats = [
-	[1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1],
-	[1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1],
-	[1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1],
-	[1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1],
-	[1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1],
-	[1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1],
-	[1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1],
-	[1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1],
-    [1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1],
-    [1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1]
+	[1, 1, 0, 1, 1, 0, 1, 1, 0, 1],
+	[1, 1, 0, 1, 1, 0, 1, 1, 0, 1],
+	[1, 1, 0, 1, 1, 0, 1, 1, 0, 1],
+	[1, 1, 0, 1, 1, 0, 1, 1, 0, 1],
+	[1, 1, 0, 1, 1, 0, 1, 1, 0, 1],
+	[1, 1, 0, 1, 1, 0, 1, 1, 0, 1],
+	[1, 1, 0, 1, 1, 0, 1, 1, 0, 1],
+	[1, 1, 0, 1, 1, 0, 1, 1, 0, 1],
+    [1, 1, 0, 1, 1, 0, 1, 1, 0, 1],
+    [1, 1, 0, 1, 1, 0, 1, 1, 0, 1]
 ];
 
 var conn = mysql.createConnection({
@@ -77,12 +78,48 @@ if ('development' === app.get('env')) {
 }
 
 //Page rendering
-//app.get('/', renders.main);
 app.get('/book_list',renders.book_list);
 app.get('/readingroom', renders.readingRoom);
 app.get('/qna', renders.qna);
 app.get('/notice', renders.notice);
 app.get('/map', renders.map);
+app.get('/mypage', renders.mypage);
+app.post('/mypage', function(req,res){
+	var query = conn.query('SELECT u.u_id id, u.u_name uname, b.b_name bname, b.b_location bloc,rc.r_no num FROM USER u,BOOK b, BOOK_CHECKOUT bc, READINGROOM_CHECKOUT rc WHERE u.u_no = rc.u_no and u.u_no = bc.u_no and b.b_no = bc.b_no and u.u_no = ?',
+			req.body.no ,function(err, result){
+				if (err){
+					console.error(err);
+					throw err;
+				}
+				console.log(result);
+				if(result.length === 0 ){
+					var subquery1 = conn.query('SELECT u.u_id id, u.u_name name, rc.r_no num FROM USER u,READINGROOM_CHECKOUT rc WHERE u.u_no = rc.u_no and u.u_no = ?'
+							,req.body.no, function(err, result1){
+								if (err){
+									console.error(err);
+									throw err;
+								}
+								if( result1.length === 0 ){
+									var subquery2 = conn.query('SELECT u_id, u_name FROM USER WHERE u_no = ?',req.body.no, function(err,results){
+										if (err){
+											console.error(err);
+											throw err;
+										}
+										res.send({userID:results[0].u_id, username:results[0].u_name});
+									});
+								} else {
+									var temp = result1[0].num;
+									var str = temp.substring(8,10);
+									res.send({userID:result1[0].u_id, username:result1[0].u_name, readingseat:str});
+								}
+							});
+					}else{
+					var temp = result[0].num;
+					var str = temp.substring(8,10);
+					res.send({userID:result[0].id, username:result[0].uname, bookname:result[0].bname, bookloc:result[0].bloc, readingseat:str });
+					}
+				});
+});
 
 app.get('/book_list/book_detail/0',renders.bookDetailZero);
 app.get('/book_list/book_detail/1',renders.bookDetailOne);
@@ -92,19 +129,16 @@ app.get('/book_list/book_detail/4',renders.bookDetailFour);
 app.get('/book_list/book_detail/5',renders.bookDetailFive);
 app.get('/book_list/book_detail/6',renders.bookDetailSix);
 
-
 app.get('/',function(req,res){
 	if(req.cookies.auth){
 		console.log(req.cookies.auth);
-		
-		//쿠키 유지시 Login 없애고 logout 버튼
-		//res.send('<script> document.getElementById("login").setAttribute("value", "로그아웃"); document.getElementById("join").setAttribute("value", "Mypage"); </script>');
 	}
 	else{
 		console.log(req.cookies.auth);
 	}
-	res.render("main.html");
+	res.render('main.html');
 });
+
 
 /* Join */
 app.post('/join',function(req,res){
@@ -115,39 +149,53 @@ app.post('/join',function(req,res){
 	, useraddr = req.body.join_addr
 	, userphone = req.body.join_phone;
 	
-	var user_info = { 
-			u_id : userid,
-			u_password : userpw,
-			u_name : username,
-			u_addr : useraddr,
-			u_phone : userphone
-	};
-	if(userid !== "" && userpw !=="" && userpw === confirm_userpw){	
-		var query = conn.query('insert into USER set ?',user_info,function(err,result){
+	var subquery = conn.query('select u_no FROM USER ORDER BY u_no desc',function(err,result){
 		if (err){
 			console.error(err);
 			throw err;
 		}
-		res.send('<script>alert("회원가입이 완료되었습니다. 로그인하세요.");location.href="/";</script>');
-		});
-	}
+		var str = result[0].u_no;
+		var num = Number(str.substring(1));
+		var new_u_num = num+1;
+		var new_u_no = "u00000000" + new_u_num;
+		
+		var user_info = { 
+				u_no : new_u_no,
+				u_id : userid,
+				u_password : userpw,
+				u_name : username,
+				u_addr : useraddr,
+				u_phone : userphone
+		};
+		if(userid !== "" && userpw !=="" && userpw === confirm_userpw){	
+			var query = conn.query('insert into USER set ?',user_info,function(err,result){
+			if (err){
+				console.error(err);
+				throw err;
+			}
+			res.send('<script>alert("회원가입이 완료되었습니다. 로그인하세요.");location.href="/";</script>');
+			});
+		}
+	});
 });
 
 /* Login */
 app.post('/login',function(req, res){
 	var id = req.body.id;
 	var pw = req.body.password;
-	var query = conn.query('SELECT count(*) cnt from USER where u_id=? and u_password=?',[id,pw],function(err, rows){
+	var query = conn.query('SELECT count(*) cnt, u_name name, u_no from USER where u_id=? and u_password=?',[id,pw],function(err, rows){
 		if(err){
 			console.error(err);
 			throw err;
 		}
 		console.log('rows', rows);
-		var cnt = rows[0].cnt;
+		
+		var cnt = rows[0].cnt
+		,	u_name = rows[0].name;
+		
 		if( cnt === 1 ){
 			res.cookie('auth', true);
-			res.send({result:true});
-			res.redirect("/");
+			res.send({result:true, name:u_name, u_no:rows[0].u_no});
 		}else{
 			res.send({result:false});
 		}
@@ -155,7 +203,7 @@ app.post('/login',function(req, res){
 });
 
 /* Log-out */
-app.get('/logout',function(req, res, next){
+app.get('/logout',function(req, res){
 	res.cookie('auth', false);
 	res.redirect("/");
 });
@@ -179,9 +227,11 @@ app.post('/search',function(req,res,next){
 });
 
 /* Reading room */
-app.get('/readingroom/seats',function(req,res,next){
+app.get('/readingroom/seats',function(req,res){
 	res.send(seats);
 });
+
+
 
 var server = http.createServer(app).listen(app.get('port'), function(){
 	console.log('Express server listening on port ' + app.get('port'));
@@ -191,6 +241,24 @@ var io = socketio.listen(server);
 io.sockets.on('connection',function(socket){
 	socket.on('reserve',function(data){
 		seats[data.y][data.x] = 2;
+		var r_no = "r0000000"+data.y+""+data.x;
+		var query1 = conn.query('UPDATE READINGROOM set r_checkout = "F" WHERE r_no = ?',r_no,function(err){
+			if (err) {
+				console.error(err);
+				throw err;
+			}
+		});
+		var checkout_info = {
+				u_no : data.userid
+				, r_no : r_no
+				, r_c_date : new Date().toFormat("yyyy-MM-dd")
+		};
+		var query2 = conn.query('INSERT into READINGROOM_CHECKOUT set ?',checkout_info,function(err){
+			if (err) {
+				console.error(err);
+				throw err;
+			}
+		});
 		io.sockets.emit('reserver',data);
 	});
 });

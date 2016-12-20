@@ -1,13 +1,13 @@
 <html>
     <head>
         <title>myLibrary</title>
-        <link rel="stylesheet" href="css/common.css">
-        <link rel="stylesheet" href="css/mypage.css">
-        <link rel="stylesheet" href="css/join.css">
-        <link rel="stylesheet" href="css/login.css">
+        <link rel="stylesheet" href="/css/common.css">
+        <link rel="stylesheet" href="/css/mypage.css">
+        <link rel="stylesheet" href="/css/join.css">
+        <link rel="stylesheet" href="/css/login.css">
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
@@ -16,15 +16,12 @@
     </head>
     <body>
         <header>
-            <img src="img/logo.png">
+            <img src="/img/logo.png">
             <div id="log1">
                 <input type="button" value="회원가입" class="header_btn" id="join">
                 <input type="button" value="로그인" class="header_btn" id="login">
             </div>
             <div id="log2">
-                <!--
-                    <input type="button" value="로그아웃" class="header_btn" id="logout">    
-                -->
                     <input type="button" value="로그아웃" class="header_btn" id="logout">
                     <input type="button" value="Mypage" class="header_btn" id="mypage">
                 
@@ -58,9 +55,9 @@
                     <tr><td style="font-size:1.5em;">사용자정보</td></tr>
                     <tr>
                         <td><label>아이디</label></td>
-                        <td>rlarlfehd123</td>
+                        <td id ="mypage_id"></td>
                         <td><label>이름</label></td>
-                        <td>김길동</td>
+                        <td id ="mypage_name"></td>
                     </tr>
                 </table>
             </div>
@@ -69,18 +66,20 @@
                     <tr><td style="font-size:1.5em;">대여정보</td></tr>
                     <tr>
                         <td><label>책이름</label></td>
-                        <td>쉽게 배우는 자바스크립트</td>
+                        <td id="mypage_bookname"></td>
                         <td><label>책위치</label></td>
-                        <td>A-06</td>
-                    </tr>
-                                        <tr>
-                        <td><label>책이름</label></td>
-                        <td>쉽게 배우는 자바스크립트</td>
-                        <td><label>책위치</label></td>
-                        <td>A-06</td>
+                        <td id = "mypage_booklocation"></td>
                     </tr>
                 </table>
-            
+            </div>
+            <div>
+                <table>
+                    <tr><td style="font-size:1.5em;">열람실대여정보</td></tr>
+                    <tr>
+                        <td><label>위치</label></td>
+                        <td id="mypage_reading_seat"></td>        
+                    </tr>
+                </table>
             </div>
         </section>
         <section id="login_modal">
@@ -139,9 +138,13 @@
                 </div>
             </div>
         </section>
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-        <script src="js/common.js"></script>
-        <script src="js/login_join.js"></script>
-        <script src="js/book_list.js"></script>
+        <script src="/js/common.js"></script>
+        <script src="/js/login_join.js"></script>
+        <script src="/js/book_list.js"></script>
+        <script src="js/mypage.js"></script>
+        <script src="/js/jquery.cookie.js"></script>
+        
     </body>
 </html>

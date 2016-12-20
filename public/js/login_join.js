@@ -47,9 +47,10 @@ $('#login_form').submit(function(e) {
       $.ajax({
          type:'POST',
          url:'/login',
+         dataType:'JSON',
          data:{
             id: $('#id').val(), 
-            password: $('#password').val()
+            password: $('#pw').val()
          },
          error: function (xhr, ajaxOptions, thrownError) {
             console.log(xhr.status);
@@ -57,10 +58,20 @@ $('#login_form').submit(function(e) {
          },
          success : function(result){
             if(result['result'] == true){
-                $("#join").attr("value", "마이페이지");
-                $("#login").attr("value", "로그아웃");
-                $(location).attr('href', "/");
-            }  
+                var cookieVal = $.cookie('id',result['u_no']);        
+                $(function(){
+                    alert("환영합니다. " + result['name'] +" 님");
+                });
+                $("#log1").css("display", "none");
+                $("#log2").css("display", "block");
+                $("#login_modal").css("display", "none");
+            }else{
+                $(function(){
+                    alert("아이디나 비밀번호가 틀렸습니다.");
+                });
+            }
+             
+             
          }
     });
 });

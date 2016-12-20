@@ -75,6 +75,10 @@ nav > div{
     font-weight:bold;
     cursor:pointer;
 }
+#log1{
+    display: block;
+}
+
 #log2{
     display:none;
 }
